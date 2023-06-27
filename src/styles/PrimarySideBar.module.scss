@@ -1,0 +1,7 @@
+@import './vars.scss';
+
+.container {
+    width: 270px;
+    color: white;
+    border-right: $border_width solid $border_color;
+}

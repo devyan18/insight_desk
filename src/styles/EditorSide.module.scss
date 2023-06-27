@@ -1,0 +1,51 @@
+@import './vars.scss';
+
+.container {
+    flex: 1;
+    margin: 0px;
+    padding: 0px;
+    height: 100vh;
+
+
+    display: flex;
+    flex-direction: row;
+
+    .editor {
+        flex: 1;
+        margin: 0px;
+        padding: 0px 10px;
+
+        max-height: 100vh;
+        
+        .titleEditor {
+            height: $top_height;
+            width: 100%;
+            border-bottom: $border_width solid $border_color;
+        }
+        .monacoEditor {
+            flex: 1;
+            height: calc(100vh - $top_height - 10);
+        }
+    }
+
+    .preview {
+        flex: 1;
+        padding: 8px;
+        border-left: $border_width solid $border_color;
+        background-color: $background_dark_color;
+        width: 100%;
+        .markdownPreview {
+            background-color: transparent;
+
+            pre {
+                margin: 8px;
+                font-family: 'Cascadia Code';
+
+                code {
+                    font-family: 'Cascadia Code';
+                }
+            }
+        }
+    }
+
+}
