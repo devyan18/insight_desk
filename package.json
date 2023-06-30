@@ -10,6 +10,7 @@
     "tauri": "tauri"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.1.1",
     "@codemirror/lang-markdown": "^6.2.0",
     "@codemirror/language-data": "^6.3.1",
     "@codemirror/theme-one-dark": "^6.1.2",
@@ -20,20 +21,25 @@
     "monaco-editor": "^0.39.0",
     "monaco-themes": "^0.4.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-social-login-buttons": "^3.9.1"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.4.0",
     "@types/node": "^18.7.10",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@vitejs/plugin-react": "^3.0.0",
+    "eslint": "^8.43.0",
+    "eslint-config-standard-with-typescript": "^36.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.2",
     "sass": "^1.63.6",
     "standard": "^17.1.0",
     "typescript": "^4.9.5",
     "vite": "^4.2.1"
-  },
-  "eslintConfig": {
-    "extends": "./node_modules/standard/eslintrc.json"
   }
 }

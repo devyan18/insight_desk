@@ -33,9 +33,11 @@ export default function AddGitHubAccountForm() {
       />
 
       <div className="results">
-        { listOfUsers?.length && listOfUsers?.map((user) => (
-          <GithubProfile key={user.id} username={user.login} avatar_url={user.avatar_url}/>
-        ))}
+        {
+          listOfUsers.map((user) => (
+            <GithubProfile key={user.id} username={user.login} avatar_url={user.avatar_url}/>
+          ))
+        }
       </div>
     </>
   );

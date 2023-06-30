@@ -32,17 +32,17 @@ export async function getGithubUser(username: string) {
 
 export async function getListOfGithubUsers(query: string) {
   try {
-    if (query.length < 3) return [] as GithubUser[];
+    if (query.trim().length < 3) return [] as GithubUser[];
 
     const request = await fetch(
       `${GITHUB_API_URL}/search/users?q=${query}+in:login&per_page=5`
     );
 
-    if (!request.ok) return Promise.resolve([] as GithubUser[]);
+    if (!request.ok) return [] as GithubUser[];
 
     const response = await request.json();
 
-    return response.items;
+    return response.items as GithubUser[] || [] as GithubUser[];
   } catch (error) {
     console.error(error);
     return Promise.resolve([] as GithubUser[]);

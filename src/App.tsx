@@ -1,18 +1,22 @@
-import "./App.scss";
-import AddGitHubAccountForm from "./components/AddGitHubAccountForm";
-import EditorSide from "./components/EditorSide";
-import PrimarySideBar from "./components/PrimarySideBar";
-import { useModal } from "./providers/ModalProvider";
-// import SecondarySideBar from "./components/SecondarySideBar";
+import './App.scss'
+import AddGitHubAccountForm from './components/AddGitHubAccountForm'
+import EditorSide from './components/EditorSide'
+import PrimarySideBar from './components/PrimarySideBar'
+import { useModal } from './providers/ModalProvider'
 
-function App() {
-  const { show } = useModal();
+function App (): JSX.Element {
+  const { show } = useModal()
 
   return (
     <>
       {show && (
         <dialog className="dialog" open={show}>
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="modal"
+            onClick={(e) => {
+              e.stopPropagation()
+            }}
+          >
             <AddGitHubAccountForm />
           </div>
         </dialog>
@@ -23,7 +27,7 @@ function App() {
         {/* <SecondarySideBar /> */}
       </div>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
