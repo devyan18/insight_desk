@@ -1,26 +1,28 @@
-import { useState, useEffect } from "react";
-import { GithubUser, getListOfGithubUsers } from "../services/github.service";
-import GithubProfile from "./GithubProfile";
+import { useState, useEffect } from 'react'
+import { type GithubUser, getListOfGithubUsers } from '../services/github.service'
+import GithubProfile from './GithubProfile'
 
-export default function AddGitHubAccountForm() {
-  const [username, setUsername] = useState("");
-  const [listOfUsers, setListOfUsers] = useState<GithubUser[]>([]);
+export default function AddGitHubAccountForm (): JSX.Element {
+  const [username, setUsername] = useState('')
+  const [listOfUsers, setListOfUsers] = useState<GithubUser[]>([])
 
   useEffect(() => {
     const timerId = setTimeout(() => {
       getListOfGithubUsers(username).then((users) => {
-        setListOfUsers(users);
-      });
-    }, 500);
+        setListOfUsers(users)
+      }).catch((err) => {
+        console.error(err)
+      })
+    }, 500)
 
     return () => {
-      clearTimeout(timerId);
-    };
-  }, [username]);
+      clearTimeout(timerId)
+    }
+  }, [username])
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUsername(event.target.value);
-  };
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setUsername(event.target.value)
+  }
 
   return (
     <>
@@ -40,5 +42,5 @@ export default function AddGitHubAccountForm() {
         }
       </div>
     </>
-  );
+  )
 }

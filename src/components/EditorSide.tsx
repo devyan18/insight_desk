@@ -1,22 +1,20 @@
-import MarkdownPreview from '@uiw/react-markdown-preview';
+import MarkdownPreview from '@uiw/react-markdown-preview'
 import styles from '../styles/EditorSide.module.scss'
 import Editor from '@monaco-editor/react'
 import { useState, useEffect } from 'react'
-import { useModal } from '../providers/ModalProvider';
+import { useModal } from '../providers/ModalProvider'
 
-
-export default function EditorSide () {
-
-  const {show} = useModal()
+export default function EditorSide (): JSX.Element {
+  const { show } = useModal()
 
   const [fontSize, setFontSize] = useState(18)
   const [doc, setDoc] = useState('')
 
-  const handleChange = (value: string) => {
+  const handleChange = (value: string): void => {
     setDoc(value)
   }
 
-  const handleIncreaseFontSize = () => {
+  const handleIncreaseFontSize = (): void => {
     setFontSize(fontSize + 1)
   }
 
@@ -33,14 +31,14 @@ export default function EditorSide () {
             </div>
             {
               !show && <Editor
-              onChange={e => handleChange(e || '')}
+              onChange={e => { handleChange(e ?? '') }}
               defaultLanguage="markdown"
               value={doc}
               height='calc(100% - 60px)'
               className={styles.monacoEditor}
               theme='vs-dark'
               options={{
-                fontSize: fontSize,
+                fontSize,
                 minimap: {
                   enabled: false
                 },
@@ -73,12 +71,12 @@ export default function EditorSide () {
                 cursorStyle: 'line',
                 language: 'markdown',
                 guides: {
-                  highlightActiveBracketPair: true 
+                  highlightActiveBracketPair: true
                 }
               }}
           />
             }
-            
+
         </div>
         <div className={styles.preview}>
           <MarkdownPreview

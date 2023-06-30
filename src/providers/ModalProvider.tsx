@@ -1,43 +1,42 @@
-import {useState, useContext, createContext} from 'react'
+import { useState, useContext, createContext } from 'react'
 
-type ModalContextType = {
-    show: boolean
-    toggleModal: () => void
-    closeModal: () => void
-    openModal: () => void
+interface ModalContextType {
+  show: boolean
+  toggleModal: () => void
+  closeModal: () => void
+  openModal: () => void
 }
 
 const ModalContext = createContext<ModalContextType>({
-    show: false,
-    toggleModal: () => {},
-    closeModal: () => {},
-    openModal: () => {}
+  show: false,
+  toggleModal: () => {},
+  closeModal: () => {},
+  openModal: () => {}
 })
 
-type Props = {
-    children: React.ReactNode
+interface Props {
+  children: React.ReactNode
 }
 
-export default function ModalProvider (props: Props)  {
+export default function ModalProvider (props: Props): JSX.Element {
+  const [show, setShow] = useState(false)
 
-    const [show, setShow] = useState(false)
+  const toggleModal = (): void => {
+    setShow(prev => !prev)
+  }
+  const closeModal = (): void => { setShow(false) }
+  const openModal = (): void => { setShow(true) }
 
-    const toggleModal = () => {
-        setShow(prev => !prev)
-    }
-    const closeModal = () => setShow(false)
-    const openModal = () => setShow(true)
-
-    return (
+  return (
         <ModalContext.Provider value={{
-            show,
-            toggleModal,
-            closeModal,
-            openModal
+          show,
+          toggleModal,
+          closeModal,
+          openModal
         }}>
             {props.children}
         </ModalContext.Provider>
-    )
+  )
 }
 
-export const useModal = () => useContext(ModalContext)
+export const useModal = (): ModalContextType => useContext(ModalContext)
